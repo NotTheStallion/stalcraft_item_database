@@ -10,11 +10,22 @@ permissions:
   contents: read
 
 jobs:
+
   build:
 
     runs-on: ubuntu-latest
 
+    env:
+        CLIENT_ID: ${{ secrets.CLIENT_ID }}
+        CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+
     steps:
+    - name: Check env variables
+      run: |
+        if [ -z "$CLIENT_ID" ] || [ -z "$CLIENT_SECRET" ]; then
+          echo "Error: CLIENT_ID and CLIENT_SECRET must be set."
+          exit 1
+        fi
     - uses: actions/checkout@v4
     - name: Set up Python 3.12.2
       uses: actions/setup-python@v3
