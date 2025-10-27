@@ -12,7 +12,7 @@ if str(SRC) not in sys.path:
     sys.path.insert(0, str(SRC))
 
 
-from utils.api import is_id_valid
+from utils.api import is_id_valid  # noqa: E402
 
 
 
