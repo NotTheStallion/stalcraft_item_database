@@ -1,0 +1,824 @@
+id,name,type,tradable
+9mmq,Saltweed Pulp,medicine,True
+1ddr,Mintfruit Pulp,medicine,True
+g00n,Sweettooth Pulp,medicine,True
+z77k,Spiritfruit Pulp,medicine,True
+5ddo,Cubemelon Pulp,medicine,True
+y770,Lemongrass Pulp,medicine,True
+wooz,Dim minerals,misc,True
+400j,Emerald Minerals,misc,True
+kllj,Azure Minerals,misc,True
+qvv4,Purple Minerals,misc,True
+jlll,Scarlet Minerals,misc,True
+lll2,Golden Minerals,misc,True
+rrrz,Pale-Leaf,misc,True
+033k,Acid Nettle,misc,True
+m22k,Water Carrier,misc,True
+ovv5,Gnosis,misc,True
+npp9,Hellroot,misc,True
+prrd,Amber Wormwood,misc,True
+g0vn,Canister of Gas,misc,True
+z7lk,Canister of Diesel,misc,True
+5dgo,Propane Tank,misc,True
+y7j0,Methane Tank,misc,True
+wo6z,Hadron converter,misc,True
+401j,Cold fusion battery,misc,True
+g0gp,Rotten Boards,misc,True
+z7pn,Fabric,misc,True
+y7po,Reagents,misc,True
+wopo,Gloves,misc,True
+40vn,Ammonia,misc,True
+klwv,Oil,misc,True
+qvrk,Boric Acid,misc,True
+jl66,Protective Gear,misc,True
+ll41,Duct Tape,misc,True
+rr05,Yeast,misc,True
+03v1,Flask Containing a Solution,misc,True
+m2k7,Zombie Eye,misc,True
+ovj0,Dead Person’s Pituitary Gland,misc,True
+npq3,Anomalous Plasma,misc,True
+prl2,Coffee,misc,True
+vrpd,Mutt Meat,misc,True
+dq0n,Piggy Meat,misc,True
+2d76,Boar Meat,misc,True
+3rpg,Half-rotten Fish,misc,True
+7rp7,Garlic,misc,True
+6rpy,Tomato,misc,True
+1d31,Can of Beans,misc,True
+g02p,Can of Peas,misc,True
+5dp0,Can of Millet,misc,True
+y7mo,Can of Pasta,misc,True
+woro,Corpse Tumor,misc,True
+40pn,Anomalous Yeast,misc,True
+kl9v,Milk,misc,True
+qvwk,Glue,misc,True
+jl26,Polymers,misc,True
+ll11,Broken Device,misc,True
+rr45,Asbestos,misc,True
+03p1,Gas Cylinder,misc,True
+m2g7,Textolite,misc,True
+ov50,Frying Pan,misc,True
+npz3,Saucepan,misc,True
+pry2,Plastic Bottle,misc,True
+vrld,Tin Can,misc,True
+dq2n,Multitool,misc,True
+2d56,Pack of Bolts,misc,True
+9mr0,Tourniquet,misc,True
+1d56,Splinters,misc,True
+g060,Sewing Kit,misc,True
+z7d2,Acid,misc,True
+5dkg,Iodine Solution,misc,True
+y7dz,Frosty Mixture,misc,True
+wodp,Electric Mixture,misc,True
+404p,Thermal Mixture,misc,True
+kl70,Gypsum,misc,True
+qv76,Petroleum Coke,misc,True
+jl77,Iron,misc,True
+rr7g,Copper,misc,True
+03zd,Shock-Absorbing Coating,misc,True
+m27j,Amino Acid,misc,True
+ov7o,Alpha Biomaterial,misc,True
+npr6,Zinc,misc,True
+prm6,Lead,misc,True
+vr1n,Blood Plasma,misc,True
+dqg5,Animal Fat,misc,True
+2dq0,Fried Mutt Meat,food,True
+3r6z,Fried Piggy Meat,food,True
+7rm3,Fried Boar Meat,food,True
+6r0j,Flour,misc,True
+9mn0,Fish Fillet,food,True
+1dk6,Set of Spices,misc,True
+g0y0,Pickles,food,True
+z7y2,Pureed Vegetables,food,True
+5drg,Braga,food,True
+y75z,Juice,drink,True
+wogp,Boards,misc,True
+40lp,Microelectronics,misc,True
+klq0,Biogas,misc,True
+9mgw,Charcoal,misc,True
+1dnq,Fabric Bag,misc,True
+g05g,Brass,misc,True
+z719,Steel,misc,True
+5d24,Mercury,misc,True
+y79w,Copper Chips,misc,True
+wo2d,Chlorine,misc,True
+40dl,Hydrogen,misc,True
+klk3,Ethylene,misc,True
+qvm9,Nitric Acid,misc,True
+jl44,Sulfuric Acid,misc,True
+ll6q,Caustic Sodium,misc,True
+035r,Carbon Dioxide,misc,True
+m2lr,Carbon Fiber,misc,True
+ovo4,Abrasive,misc,True
+np0w,Potash,misc,True
+prp5,Refined Fat,misc,True
+vrwg,Wort,food,True
+dqn9,Anomalous Materials,misc,True
+2dkm,Ground Dog Meat,food,True
+3rjk,Ground Piggy Meat,food,True
+7rvr,Ground Boar Meat,food,True
+6rn6,Dough,misc,True
+9m7w,Condensed Milk,food,True
+1dwq,Base Wine,drink,True
+z7m9,Multimeter,misc,True
+5dm4,Control Board,misc,True
+y7rw,Electric Motor Parts,misc,True
+wokd,Lubricants,misc,True
+40rl,Cutting Board,misc,True
+99dl,Milling Cutter,misc,True
+gmn6,Bullet Alloy,misc,True
+5n51,Gunpowder,misc,True
+y24k,Potassium Iodide,misc,True
+w732,Saltpeter,misc,True
+4nkr,Aluminum Powder,misc,True
+km6y,Sulfuric Salt,misc,True
+q2yj,Strong Steel,misc,True
+jon0,Ammonium Chloride,misc,True
+l2kk,Glycerin,misc,True
+r2mv,Wine with Sediment,drink,True
+0279,Autotransformer,misc,True
+mm4y,Advanced Electrode,misc,True
+om46,Set of Fine Drills and Bits,misc,True
+nmj1,Welded Metal Sheets,misc,True
+p3vw,Electric Motor,misc,True
+z2om,Black Gunpowder,misc,True
+5njq,Aluminum,misc,True
+y263,Methane,misc,True
+4njo,Aluminum Chloride,misc,True
+km2p,Acetyl Chloride,misc,True
+q2p3,Polypropylene,misc,True
+jowg,Psychoreagent,misc,True
+l2oo,Incendiary Coating,misc,True
+r29y,Hormones,misc,True
+026y,Prothrombin,misc,True
+mmn2,Blood Serum,misc,True
+om6m,Measuring Equipment,misc,True
+nmo2,Solid Metal,misc,True
+p3o4,Rotor System,misc,True
+v25p,Operational Booster,misc,True
+dj92,Set of Kitchen Knives,misc,True
+2nw5,Protective Coating,misc,True
+999q,Plate Carrier,misc,True
+gmmn,Casing,misc,True
+z22k,Bullet,misc,True
+5nno,Large-Caliber Bullet,misc,True
+y220,Adrenaline,misc,True
+w77z,Ethyl Aluminum,misc,True
+4nnj,Mercury Fulminate,misc,True
+kmmj,Industrial Solvent,misc,True
+q224,Nitroglycerin,misc,True
+jool,Aniline,misc,True
+l222,Antitoxin,misc,True
+r22z,Nootropic,misc,True
+022k,Drill,misc,True
+mmmk,Reactor Vessel,misc,True
+99pz,Polyethylene Base,misc,True
+1731,Kevlar,misc,True
+gm2p,Nitrogelatin,misc,True
+z29n,Dynamite,misc,True
+5np0,Mutated Enzymes,misc,True
+y2mo,Neurodegenerant,misc,True
+w7ro,Mutagen,misc,True
+4npn,Telomerase,misc,True
+km9v,Coagulant,misc,True
+q2wk,Air Duct,misc,True
+17k6,Mutation Enzyme,misc,True
+gmy0,Cleaning Reagent,misc,True
+z2y2,Anomalous Genes,misc,True
+gdj6,Elbrus Short Range Detector,weapon/device,True
+9nd0,Spectral Crystal,artefact/electrophysical,True
+1k96,Rattle,artefact/electrophysical,True
+gyn0,Comet,artefact/electrophysical,True
+zy32,Battery,artefact/electrophysical,True
+5r5g,Ice Hedgehog,artefact/electrophysical,True
+y54z,Kettlebell,artefact/electrophysical,True
+wg3p,Disintegrator,artefact/electrophysical,True
+4lkp,Ilyich Lamp,artefact/electrophysical,True
+kqr0,Helium,artefact/electrophysical,True
+qo06,Transformer,artefact/electrophysical,True
+gy10,Red Crystal,artefact/thermal,True
+zyw2,Candlelight,artefact/thermal,True
+5rog,Leech,artefact/thermal,True
+y5nz,Wolf Tears,artefact/thermal,True
+wglp,Viburnum Branch,artefact/thermal,True
+4l7p,Scallop,artefact/thermal,True
+kqp0,Firebird,artefact/thermal,True
+qoq6,Sun,artefact/thermal,True
+ljrj,Radiator,artefact/thermal,True
+9n1w,Berry,artefact/gravity,True
+1k4q,Lard,artefact/gravity,True
+gypg,Embryo,artefact/gravity,True
+zyo9,Swamp Rot,artefact/gravity,True
+5r34,Heart,artefact/gravity,True
+y5yw,Dumbbell,artefact/gravity,True
+wgzd,Frame,artefact/gravity,True
+gyjg,Acid Crystal,artefact/biochemical,True
+zyv9,Lollipop,artefact/biochemical,True
+5r04,Phlegm,artefact/biochemical,True
+y5vw,Crust,artefact/biochemical,True
+wgvd,Inkwell,artefact/biochemical,True
+4lml,Snake Eye,artefact/biochemical,True
+kqj3,Snail,artefact/biochemical,True
+qo59,Gum,artefact/biochemical,True
+jkj4,Lemna,artefact/biochemical,True
+ljpq,Polyhedron,artefact/biochemical,True
+9nml,Burr,artefact/biochemical,True
+1kdg,Sticky Burr,artefact/biochemical,True
+gy06,Scrubber,artefact/biochemical,True
+zy7y,Hedgehog,artefact/biochemical,True
+5rd1,Steel Hedgehog,artefact/biochemical,True
+gyv6,Rose,artefact/gravity,True
+zyly,Onion,artefact/gravity,True
+5rg1,Cursed Rose,artefact/gravity,True
+y5jk,Veiner,artefact/gravity,True
+wg62,White Rose,artefact/gravity,True
+4l1r,Proto-Onion,artefact/gravity,True
+kqgy,Bracelet,artefact/gravity,True
+9nvy,Sponge,artefact/gravity,True
+1kv2,Prima,artefact/gravity,True
+gyg5,Shrimp,artefact/gravity,True
+zypm,Golden Prima,artefact/gravity,True
+5rpq,Amberite,artefact/gravity,True
+y5m3,Cryogen,artefact/gravity,True
+wgr3,Dark Crystal,artefact/gravity,True
+gyq5,Spiral,artefact/electrophysical,True
+zyrm,Mirror,artefact/electrophysical,True
+5rwq,Shard,artefact/electrophysical,True
+y5w3,Prism,artefact/electrophysical,True
+wg53,Atom,artefact/electrophysical,True
+gyln,Frost,artefact/thermal,True
+zyqk,Leaded Glass,artefact/thermal,True
+5rzo,Crust,artefact/thermal,True
+y5k0,Whirlwind,artefact/thermal,True
+wgwz,Fahrenheit,artefact/thermal,True
+kqoj,Heel,artefact/thermal,True
+qo94,Chicken God,artefact/thermal,True
+jkml,Eye of the Storm,artefact/thermal,True
+ljn2,Chilly,artefact/thermal,True
+1kw1,Crystal of Inside Out,artefact/other_arts,True
+gy7p,Retina,artefact/other_arts,True
+zymn,Tallow,artefact/other_arts,True
+5rm0,Tiny key,artefact/other_arts,True
+y5ro,Egg,artefact/other_arts,True
+wgko,Inside Out Rose,artefact/other_arts,True
+4lrn,Bismuth,artefact/other_arts,True
+kq4v,Dark Viburnum,artefact/other_arts,True
+qodk,Bubblegum,artefact/other_arts,True
+jky6,Raisin,artefact/other_arts,True
+w4no,Colophony,artefact/other_arts,True
+49zn,Stress fest,artefact/other_arts,True
+k3yv,Hoop,artefact/other_arts,True
+q1lk,Gills,artefact/other_arts,True
+j3p6,Fossil,artefact/other_arts,True
+9ypy,Steel Plate I,other,True
+1p32,Steel Plate II,other,True
+g325,Steel Plate III,other,True
+zj9m,Steel Plate IV,other,True
+514q,Steel Plate V,other,True
+j3rg,Ceramic Plate I,other,True
+l3mo,Ceramic Plate II,other,True
+rg5y,Ceramic Plate III,other,True
+0ngy,Ceramic Plate IV,other,True
+m3o2,Ceramic Plate V,other,True
+2v55,Composite Plate I,other,True
+3dy5,Composite Plate II,other,True
+7zqj,Composite Plate III,other,True
+6gk0,Composite Plate IV,other,True
+9yly,Composite Plate V,other,True
+rg7y,Experimental Thermoplate I,other,True
+0nzy,Experimental Thermoplate II,other,True
+m372,Experimental Thermoplate III,other,True
+o37m,Experimental Thermoplate IV,other,True
+o335,KZS-2u,containers,True
+1p2r,KZS-3u,containers,True
+w4wz,Berloga — 4 Container,containers,True
+q194,Forager Container,containers,True
+j3ml,SMC Container,containers,True
+l3n2,Berloga-4u Container,containers,True
+rg1z,KZS-4u,containers,True
+3d11,KZS-5u,containers,True
+49dj,Berloga-6u Container,containers,True
+nv43,NPA Backpack,containers,True
+jm94,RGN,grenade,True
+lngq,RGO,grenade,True
+nvpw,Flare Grenade,grenade,True
+p2r5,M84,grenade,True
+vyrg,M84 QD,grenade,True
+dkq9,RGD-5,grenade,True
+29dm,F-1,grenade,True
+31rk,M67,grenade,True
+7yrr,V40 Mini-Grenade,grenade,True
+65r6,VOG-25 Grenade Round,grenade,True
+94mw,VOG-25 Podkidysh Grenade Round,grenade,True
+12dq,M381 Grenade Round,grenade,True
+gl0g,M397 Grenade Round,grenade,True
+wwod,M18 Claymore,other,True
+319k,Gauss Rifle Battery,bullet,True
+9g6z,9 mm Round,bullet,True
+1nr1,9 mm Armor-piercing Round,bullet,True
+g54p,9 mm Expanding Round,bullet,True
+z1zn,9 mm Incendiary Round,bullet,True
+52l0,9 mm SBP Round,bullet,True
+qmjk,12 Caliber Incendiary,bullet,True
+j456,12 Caliber Buckshot,bullet,True
+l6y1,12 Caliber Birdshot,bullet,True
+row5,12 Caliber Hunting Round,bullet,True
+0or1,12 Caliber Slug,bullet,True
+mj07,5.45 mm Round,bullet,True
+ork0,5.45 mm Armor-Piercing Round,bullet,True
+nl43,5.45 mm Expanding Round,bullet,True
+p062,5.45 mm Incendiary Round,bullet,True
+vdjd,5.45 mm SBP Round,bullet,True
+d1mn,5.56 mm Round,bullet,True
+2p16,5.56 mm Armor-Piercing Round,bullet,True
+3v4g,5.56 mm Expanding Round,bullet,True
+7977,5.56 mm Incendiary Round,bullet,True
+63oy,5.56 SBP Round,bullet,True
+1n91,7.62 mm Round,bullet,True
+g5np,7.62 mm Armor-Piercing Round,bullet,True
+z13n,7.62 mm Expanding Round,bullet,True
+5250,7.62 mm Incendiary Round,bullet,True
+y94o,7.62 mm SBP Round,bullet,True
+w23o,9x39 mm SP-5 Round,bullet,True
+4dkn,9x39 mm SP-6 Round,bullet,True
+kkrv,9x39 mm SBP Round,bullet,True
+qm0k,Large-Caliber Handmade Round,bullet,True
+l601,7.62 mm Sniper Round,bullet,True
+0o01,Gauss Rifle Battery,bullet,True
+nlk3,10 mm Round,bullet,True
+p0j2,10 mm Incendiary Round,bullet,True
+vdnd,Tank of Combustible Mixture,bullet,True
+2pr6,Tank of Combustible Mixture,bullet,True
+3vog,12.7 mm Round,bullet,True
+79w7,12.7 mm SMG Round,bullet,True
+63yy,12.7 mm Sniper Round,bullet,True
+d1p5,10 mm Armor-Piercing Round,bullet,True
+2p30,10 mm SBP Round,bullet,True
+3v3z,9x39 mm Incendiary Round,bullet,True
+523g,5.45 Shi-3 Round,bullet,True
+y9yz,5.56 Kurchatov Round,bullet,True
+4d3p,7.62 mm Dinosaur Round,bullet,True
+qmn6,9x39 mm Electroswing Round,bullet,True
+j4g7,12.7 mm Easy Mode Round,bullet,True
+ropg,9x39 mm Long-Range Round,bullet,True
+0ojd,5.56 mm Heating Round,bullet,True
+mjyj,12 Caliber Acid Dragon Round,bullet,True
+1r0y6,Shrub-1 Hand Grenade,grenade,True
+g4rz0,Handmade Flashbang Grenade,grenade,True
+g4r26,Pouch of 10 mm Armor-Piercing Rounds,bullet,True
+5lqp1,Pouch of 9x39 mm Incendiary Rounds,bullet,True
+4qzpr,Pouch of 5.45 mm SEP Rounds,bullet,True
+qjlzj,Pouch of 7.62 mm SEP Rounds,bullet,True
+j5pr0,Pouch of 9x39 mm SEP Rounds,bullet,True
+lywmk,Pouch of 5.45 Shi-3 Rounds,bullet,True
+rwl5v,Pouch of 5.56 mm Kurchatov Rounds,bullet,True
+0rwg9,Pouch of 10 mm Explosive Rounds,bullet,True
+m0woy,Pouch of 7.62 mm Dinosaur Rounds,bullet,True
+okq16,Pouch of 9 mm Icicle Rounds,bullet,True
+n4691,Pouch of 9x39 mm Electroswing Rounds,bullet,True
+p6kgw,Pouch of 12.7 mm Easy Mode Rounds,bullet,True
+vjqkr,Pouch of 9 mm Long-Range Rounds,bullet,True
+dmlwj,Pouch of 9x39 mm Long-Range Rounds,bullet,True
+2o65l,Pouch of 5.56 mm Heating Rounds,bullet,True
+3g0yl,Pouch of 12 caliber Acid Dragon Rounds,bullet,True
+7l4q6,Crate of Jury-Rigged Grenades,misc,True
+6wmkp,Crate of Shrub-1 Grenades,misc,True
+96qll,Box of Handmade Flashbang Grenades,misc,True
+1r0zg,Crate of Jury-Rigged VOG-25s,misc,True
+g4rq6,Crate of Jury-Rigged VOG-25Ps,misc,True
+zzgry,Crate of Handmade M381s,misc,True
+5lq41,Crate of Handmade M397s,misc,True
+y31lk,Box of Handmade Mini Grenades,misc,True
+wjnq2,Crate of Jury-Rigged Fragmentation Grenades,misc,True
+knydy,Crate of Veil Grenades,misc,True
+qjl6j,Crate of Spark Grenades,misc,True
+j5pd0,Crate of Thunder Grenades,misc,True
+lywdk,Crate of Napalm Grenades,misc,True
+rwldv,Crate of Snowstorm Grenades,misc,True
+0rw19,Crate of Tarmac Grenades,misc,True
+m0wdy,Crate of Plantain Grenades,misc,True
+okq26,Crate of Sickness Grenades,misc,True
+n46d1,Crate of Stinky Grenades,misc,True
+dmldj,Bag of Steel Plates III,misc,True
+2o6zl,Bag of Steel Plates IV,misc,True
+3g05l,Bag of Steel Plates V,misc,True
+96qjl,Bag of Ceramic Plates III,misc,True
+1r0gg,Bag of Ceramic Plates IV,misc,True
+g4rd6,Bag of Ceramic Plates V,misc,True
+y31wk,Bag of Composite Plates III,misc,True
+wjn52,Bag of Composite Plates IV,misc,True
+4qzyr,Bag of Composite Plates V,misc,True
+0rl9k,Rat’s Head,misc,True
+1rl4r,Strong Mutt’s Tail,misc,True
+5lo3o,Strong Boar’s Hoof,misc,True
+dmypg,Corrosive Fiend Meat,misc,True
+3gqkg,Unstable Anomalous Battery,misc,True
+7l127,Anomalous Dust,misc,True
+96z2z,Chronodust,misc,True
+1rl61,Chronosphere,misc,True
+1rl71,Changedust,misc,True
+5logg,Strange Artifact,misc,True
+y3nmw,Advanced Spare Parts,other,True
+wjlrd,Cheap Tools,other,True
+4q7pl,Advanced Tools,other,True
+qjqw9,Standard Tools,other,True
+okp24,Pouch of 9 mm Armor-Piercing Rounds,bullet,True
+n4wdw,Pouch of 12x76 mm Slugs,bullet,True
+p6qd5,Pouch of 5.45 mm Armor-Piercing Rounds,bullet,True
+vj3zg,Pouch of 5.56 mm Armor-Piercing Rounds,bullet,True
+dmyd9,Pouch of 7.62 mm Armor-Piercing Rounds,bullet,True
+2o0zm,Pouch of 9x39 mm SP-6 Rounds,bullet,True
+7l1kr,Pouch of Guide’s First-Aid Kits,medicine,True
+96zjw,Pouch of Lab First-Aid Kits,medicine,True
+1rlgq,Pouch of Military First-Aid Kits,medicine,True
+4q7yl,Pouch of 9 mm SBP Rounds,bullet,True
+knpd3,Pouch of 5.45 mm SBP Rounds,bullet,True
+qjq69,Pouch of 5.56 mm SBP Rounds,bullet,True
+j5qd4,Pouch of 7.62 mm SBP Rounds,bullet,True
+lyrdq,Pouch of 9x39 mm SBP Rounds,bullet,True
+rwv7l,Pouch of 9 mm Incendiary Rounds,bullet,True
+0rlzr,Pouch of 12x76 mm Incendiary Rounds,bullet,True
+m0q7r,Pouch of 5.45 mm Incendiary Rounds,bullet,True
+okp74,Pouch of 5.56 mm Incendiary Rounds,bullet,True
+n4w7w,Pouch of 7.62 mm Incendiary Rounds,bullet,True
+96z7y,Catalyst,misc,True
+1rlw2,Reset Essence,other,True
+zzwmm,Changing Serum,other,True
+96o1q,Gold Weapon Paint,other,True
+1ry4r,Red Weapon Paint,other,True
+g4zpn,Orange Weapon Paint,other,True
+zznok,Yellow Weapon Paint,other,True
+5lj3o,Green Weapon Paint,other,True
+y36y0,Light Blue Weapon Paint,other,True
+wjyzz,Blue Weapon Paint,other,True
+4qj3j,Purple Weapon Paint,other,True
+kn2zj,Black Weapon Paint,other,True
+qjpn4,White Weapon Paint,other,True
+j5wgl,Khaki Weapon Paint,other,True
+lyo52,Olive Weapon Paint,other,True
+rw9pz,Brown Weapon Paint,other,True
+0r6jk,Pink Weapon Paint,other,True
+m0nyk,Gray Weapon Paint,other,True
+g4zg0,Hexagon-A Camouflage,other,True
+zznp2,Hexagon-B Camouflage,other,True
+wjypp,Belgian Jigsaw Camouflage,other,True
+qjpr6,M90 Night Camouflage,other,True
+j5w67,M90 Desert Camouflage,other,True
+rw90g,ERDL ARVN Red Camouflage,other,True
+0r6vd,ERDL ARVN SV Camouflage,other,True
+m0nkj,ERDL ARVN Yellow Camouflage,other,True
+vj5ln,ERDL Urban Camouflage,other,True
+dm925,ERDL USCM Camouflage,other,True
+2ow70,ERDL Woodland Camouflage,other,True
+3g2pz,Multicam Camouflage,other,True
+96op0,DPM Kuwaiti Police Camouflage,other,True
+g4z20,DPM Oman Camouflage,other,True
+y36mz,DPM Urban Camouflage,other,True
+wjyrp,DPM Woodland A Camouflage,other,True
+kn290,Hexcam Arid Camouflage,other,True
+qjpw6,Hexcam Jungle Camouflage,other,True
+j5w27,Hexcam OPFOR Camouflage,other,True
+rw94g,VolumeHex Flora Camouflage,other,True
+0r6pd,VolumeHex Dune Camouflage,other,True
+m0ngj,VolumeHex Wave Camouflage,other,True
+n4o96,Flecktarn Camouflage,other,True
+p6og6,Flecktarn Suburban Camouflage,other,True
+vj5kn,Flecktarn Forest Camouflage,other,True
+96ol0,Hexagon-C Camouflage,other,True
+1rmwg,Red Armor Paint,other,True
+g4j76,Orange Armor Paint,other,True
+zzvmy,Yellow Armor Paint,other,True
+y3vrk,Light Blue Armor Paint,other,True
+wjvk2,Blue Armor Paint,other,True
+4qmrr,Purple Armor Paint,other,True
+kn1yy,Black Armor Paint,other,True
+qj4lj,White Armor Paint,other,True
+j59p0,Khaki Armor Paint,other,True
+lygwk,Olive Armor Paint,other,True
+rwklv,Brown Armor Paint,other,True
+0ryw9,Manly Pink Armor Paint,other,True
+m0zwy,Gray Armor Paint,other,True
+g4wjn,Hexagon-A Camouflage,other,True
+zz6vk,Hexagon-B Camouflage,other,True
+wjmvz,Belgian Jigsaw Camouflage,other,True
+qj454,M90 Night Camouflage,other,True
+j59jl,M90 Desert Camouflage,other,True
+rwkyz,ERDL ARVN Red Camouflage,other,True
+0rymk,ERDL ARVN SV Camouflage,other,True
+m0z9k,ERDL ARVN Yellow Camouflage,other,True
+vjmv7,ERDL Urban Camouflage,other,True
+dmz4g,ERDL USCM Camouflage,other,True
+2o4mv,ERDL Woodland Camouflage,other,True
+3gkm1,Multicam Camouflage,other,True
+9622q,DPM Kuwaiti Police Camouflage,other,True
+g4wwn,DPM Oman Camouflage,other,True
+y3oo0,DPM Urban Camouflage,other,True
+wjmmz,DPM Woodland A Camouflage,other,True
+kn11j,Hexcam Arid Camouflage,other,True
+qj444,Hexcam Jungle Camouflage,other,True
+j599l,Hexcam OPFOR Camouflage,other,True
+rwkkz,VolumeHex Flora Camouflage,other,True
+0ryyk,VolumeHex Dune Camouflage,other,True
+m0zzk,VolumeHex Wave Camouflage,other,True
+n4559,Flecktarn Camouflage,other,True
+p6wwd,Flecktarn Suburban Camouflage,other,True
+vjmm7,Flecktarn Forest Camouflage,other,True
+962mq,Hexagon-C Camouflage,other,True
+lyljj,M4 LB,weapon/assault_rifle,True
+lylnq,HK MP7A2,weapon/submachine_gun,True
+4qnkr,Steyr Scout,weapon/sniper_rifle,True
+4qn7r,CR-380,weapon/sniper_rifle,True
+dmj6j,SVCh,weapon/sniper_rifle,True
+3gnzl,QBU-191,weapon/sniper_rifle,True
+wj7v3,RMO-93,weapon/shotgun_rifle,True
+qj253,Chiappa Triple Crown,weapon/shotgun_rifle,True
+j5o9g,OTs-62,weapon/shotgun_rifle,True
+rw2ky,MTs-255,weapon/shotgun_rifle,True
+m0mz2,M1014 Breacher,weapon/shotgun_rifle,True
+p63w4,Derya MK-12 AS-103S,weapon/shotgun_rifle,True
+969vz,HK UMP9,weapon/submachine_gun,True
+1r7v1,IMI Mini Uzi,weapon/submachine_gun,True
+g4mgp,IMI Micro Uzi,weapon/pistol,True
+5lnv0,HK MP5K,weapon/submachine_gun,True
+y32po,Ingram MAC-10,weapon/pistol,True
+5lnp0,SOK-94,weapon/sniper_rifle,True
+g4mqp,APS,weapon/pistol,True
+zz2rn,AK-105,weapon/assault_rifle,True
+y32lo,FN SCAR-L,weapon/assault_rifle,True
+wj7qo,RPK,weapon/machine_gun,True
+4qnwn,OTs-14M Hurricane,weapon/assault_rifle,True
+knm0v,SV-98,weapon/sniper_rifle,True
+ly2m1,M1014,weapon/shotgun_rifle,True
+rw255,M249 SAW,weapon/machine_gun,True
+0r2g1,9A-91,weapon/assault_rifle,True
+m0mo7,VSK-94,weapon/sniper_rifle,True
+okm10,Steyr AUG 9 mm,weapon/submachine_gun,True
+n4m93,MP-412,weapon/pistol,True
+dmjwn,HK416,weapon/assault_rifle,True
+2onz6,RPK-16,weapon/machine_gun,True
+3gn5g,TKB-0146M,weapon/assault_rifle,True
+7lnk7,MTs-116M,weapon/sniper_rifle,True
+6w64y,Grizzly 8.5,weapon/shotgun_rifle,True
+969jz,Steyr AUG A2,weapon/assault_rifle,True
+1r7g1,Steyr AUG A3,weapon/assault_rifle,True
+g4mdp,AK-12,weapon/assault_rifle,True
+zz24n,SIG SG 550 Sniper,weapon/sniper_rifle,True
+5lnw0,FN FAL,weapon/assault_rifle,True
+wj75o,FN SCAR-H,weapon/assault_rifle,True
+4qnyn,PTRD-M,weapon/heavy,True
+0r211,Crye Precision SIX12,weapon/shotgun_rifle,True
+okm20,HK PSG1,weapon/sniper_rifle,True
+p63d2,HK417,weapon/assault_rifle,True
+vj2zd,DSA-58,weapon/assault_rifle,True
+dmjdn,AK-308,weapon/assault_rifle,True
+2ony6,IWI Tavor X95,weapon/assault_rifle,True
+969r0,Tsunami,weapon/submachine_gun,True
+1r756,Frog,weapon/submachine_gun,True
+rw27g,Rapier,weapon/assault_rifle,True
+0r2zd,Equalizer,weapon/assault_rifle,True
+wj72d,AVT-40,weapon/sniper_rifle,True
+rw23l,Wave,weapon/sniper_rifle,True
+1rj9g,Eternal Novice’s PM,weapon/pistol,True
+rwzmv,Bee,weapon/pistol,True
+g4vk6,Dream,weapon/pistol,True
+zzlwy,Arsenal FAL,weapon/assault_rifle,True
+wj6l2,Arsenal SCAR-H,weapon/assault_rifle,True
+knv5y,Arsenal HK417,weapon/assault_rifle,True
+qjg3j,Arsenal DSA-58,weapon/assault_rifle,True
+j5vz0,Arsenal AK-308,weapon/assault_rifle,True
+lyv9k,Arsenal X95,weapon/assault_rifle,True
+y3j20,Gerber Downrange Tomahawk,weapon/melee,True
+knvmj,Jagdkommando,weapon/melee,True
+qjg24,Sapper’s Shovel,weapon/melee,True
+0rqqk,UVSR,weapon/melee,True
+m0vvk,NR-43,weapon/melee,True
+3g7k5,Dystonia,attachment/other,True
+5lv9o,Sig Sauer Optical Sight,attachment/collimator_sights,True
+ly4z2,Acecare Optical Sight,attachment/collimator_sights,True
+y3pwo,OKP-7 Collimator Sight,attachment/collimator_sights,True
+knwdv,Barska Collimator Sight,attachment/collimator_sights,True
+j56d6,Barska Collimator Sight,attachment/collimator_sights,True
+vjpzd,PK-01(T) Collimator Sight,attachment/collimator_sights,True
+dm0dn,PK-01(T/Z) Collimator Sight,attachment/collimator_sights,True
+3g7wg,DM Collimator Sight,attachment/collimator_sights,True
+6wvqy,Panorama Collimator Sight,attachment/collimator_sights,True
+y3pdo,Trapezoid Collimator sight,attachment/collimator_sights,True
+1r39q,AKademia T’ma Flash Hider,attachment/barrel,True
+zz939,Whirlwind MBC,attachment/barrel,True
+y3mgw,FA556 Mini Silencer,attachment/barrel,True
+wjr9d,Salvo 12 Silencer,attachment/barrel,True
+m0gqr,Antithesis,attachment/barrel,True
+5lpo4,PBS-4,attachment/barrel,True
+4qp7l,PSUZV-11TM.12 Imkas,attachment/barrel,True
+0rp9r,PBS-1,attachment/barrel,True
+wjro3,"5.56 NATO Drum Magazine, Khaki",attachment/mag,True
+4qp0o,"5.56 NATO Drum Magazine, Black",attachment/mag,True
+qjwv3,AA-12 Drum Magazine,attachment/mag,True
+j52lg,"7.62 NATO PMAG Magazine, Khaki",attachment/mag,True
+ly1lo,"7.62 NATO PMAG Magazine, Black",attachment/mag,True
+rw4ry,5.56 NATO EMAG Drum Magazine,attachment/mag,True
+1r3d2,Ergonomic magazine 7.62 NATO,attachment/mag,True
+g4205,Ergonomic magazine 5.56,attachment/mag,True
+4qp1o,5.45 Drum Magazine,attachment/mag,True
+96pwy,AK-308 Extended Magazine,attachment/mag,True
+1r3j2,7.62x39 Drum Magazine,attachment/mag,True
+ok5wm,Ergonomic magazine 5.45,attachment/mag,True
+p6y44,Ergonomic magazine 9x39,attachment/mag,True
+g461g,Unknown Substance Charm,attachment/accessory,True
+zzdw9,Experimental Psy-Serum Charm,attachment/accessory,True
+3g6rl,Hoplite Armored Suit,armor/combat,True
+4qlnr,MIS-99 Malachite,armor/scientist,True
+p6m1w,RAPS AH-4 Raider,armor/combined,True
+dmgvj,Osh Protective Suit,armor/combat,True
+zzyly,Scythian-2m Armored Suit,armor/combined,True
+5lr4q,Yorsh Protective Armored Suit,armor/combat,True
+y35l3,RAPS Spanner,armor/combined,True
+4qlwo,Bulat-M Armored Suit,armor/combined,True
+knq0p,Lynx Armored Suit,armor/combat,True
+96ngz,Improved Hazmat Suit,armor/scientist,True
+1rkn1,Magnet Jumpsuit,armor/scientist,True
+g4y5p,CD-3a Armored Suit,armor/combat,True
+zzy1n,Altyn Set,armor/combat,True
+5lr20,CD-3b Armored Suit,armor/combat,True
+y359o,Fog Hunter Heavy Armored Suit,armor/combat,True
+wjg2o,Altyn-T Heavy Set,armor/combat,True
+4qldn,Tonga Jumpsuit,armor/scientist,True
+knqkv,Albatross Scout Armored Exoskeleton,armor/combined,True
+qjomk,Blizzard Walker Heavy Armored Suit,armor/combat,True
+zzjgn,Albatross Infiltrator Armored Exoskeleton,armor/combined,True
+qj1lk,CD-4 Armored Suit,armor/combat,True
+rwgl5,MIS-100 Garnet,armor/scientist,True
+0rnw1,MIS-102 Zircon,armor/scientist,True
+ok3q0,Albatross Interceptor Armored Exoskeleton,armor/combined,True
+96430,Personal First-Aid Kit,medicine,True
+1r2o6,Lab First-Aid Kit,medicine,True
+g4lk0,Military First-Aid Kit,medicine,True
+zzqk2,Bandage,medicine,True
+5lzyg,Hemostat,medicine,True
+y3kgz,Antirad B-191,medicine,True
+wjw9p,Antirad B-292,medicine,True
+4qgop,Antirad B-393,medicine,True
+kno60,Neuron-22 PsyBlock,medicine,True
+qj9y6,2nd Class Antidote,medicine,True
+j5mn7,2nd Class ThermoBlock,medicine,True
+lynkj,Jiden EXTRA Energy Drink,medicine,True
+rw1mg,Arnie Tonic,medicine,True
+0rd7d,1st Class Radioprotectant,medicine,True
+m0p4j,2nd Class Radioprotectant,medicine,True
+okd4o,3rd Class Radioprotectant,medicine,True
+n4vw6,Burn Cream,medicine,True
+p62q6,Morphine,medicine,True
+vjy3n,Epinephrine,medicine,True
+dmky5,“ClearMind+”,medicine,True
+3g1qz,Vodka,drink,True
+7ly13,Guide’s First-Aid Kit,medicine,True
+6w59j,“STRIKE”,medicine,True
+964z0,Crooked Claw Vodka,drink,True
+1r2l6,“Astrixin”,medicine,True
+g4l10,ATLAS Anabolic Steroid,medicine,True
+y3knz,Pain Killer,medicine,True
+qj9q6,Neuron-33 PsyBlock,medicine,True
+j5mq7,1st Class Antidote,medicine,True
+lynrj,3rd Class Antidote,medicine,True
+rw1vg,1st Class ThermoBlock,medicine,True
+0rdld,3rd Class ThermoBlock,medicine,True
+m0pqj,Neuron-11 PsyBlock,medicine,True
+okdpo,Jolly Lemonade,drink,True
+n4vg6,Brine,drink,True
+p6256,Panacea,medicine,True
+vjy0n,Tinfoil Hat,drink,True
+2o9g0,Ozverin,medicine,True
+3g1zz,Subtropics,drink,True
+7lyo3,Alcobull,drink,True
+6w5lj,SchizoYorsh,medicine,True
+964k0,Strong Burn Cream,medicine,True
+1r216,STOMP,medicine,True
+1r246,Saep,food,True
+g4lp0,Altered Cider,drink,True
+wjwzp,Children’s Champagne,drink,True
+qj9n6,Ice Cream,food,True
+j5mg7,Sparkling Champagne,drink,True
+m0pyj,Anomalous Champagne,drink,True
+3g12z,Mutant Roast,food,True
+g4lz0,Biopatch,medicine,True
+zzqn2,Neurotonic,medicine,True
+964ow,Battery Energy drink,medicine,True
+1r2yq,Strength stimulator,medicine,True
+g4lzg,Geyser Vodka,drink,True
+zzqn9,Unforgettable Cocktail,drink,True
+96gqz,Piece of White Bread,food,True
+1rn01,Piece of Rye Bread,food,True
+y391o,Sausage Slices,food,True
+wj2no,Army Crispbread,food,True
+qjmlk,Caviar Sandwich,food,True
+j54p6,Salami Sandwich,food,True
+ly6w1,Salami Sandwich,food,True
+rwol5,Canned Beans,food,True
+0row1,Fish Preserves,food,True
+m0jw7,Sprats,food,True
+okrq0,Meat Preserves,food,True
+n4l63,Boiled Tuna,food,True
+vjdqd,Olivier Salad,food,True
+dm1ln,Red Caviar,food,True
+2opo6,Tourist’s Delight,food,True
+3gvgg,Doggie Delight Pâté,food,True
+7l9l7,Hoof to the Face Meat Jelly,food,True
+6w3wy,Canine Howl Preserves,food,True
+96g6z,Octopus Fresh Salad,food,True
+1rnr1,Exceptional Beauty,food,True
+wj2jo,American MRE,food,True
+4qdqn,Domestic MRE,food,True
+qjmjk,Combat Peas,food,True
+j5456,Excellent Canned Meat,food,True
+rwow5,Bottle of Pure Water,drink,True
+rwoj5,Lemon,food,True
+n4lg6,Millet Porridge with Meat,food,True
+p6056,Pease Porridge with Meat,food,True
+dm165,Navy-Style Pasta,food,True
+2opg0,Aspic,food,True
+zz1o2,Bean soup,food,True
+5l23g,Solyanka,food,True
+y39yz,Pea Soup,food,True
+wj2zp,Garlic Soup,food,True
+4qd3p,Nobleman’s Catfish Stew,food,True
+vjd5n,Premium for 7 days,other,True
+dm195,Premium for 14 days,other,True
+2opw0,Premium for 30 days,other,True
+3gv2z,Premium for 90 days,other,True
+7l9d3,Premium for 180 days,other,True
+drmwj,Industrial Alcohol,drink,True
+w3923,Replacement Battery,misc,True
+77w9j,Resonator,misc,True
+9d3gy,Copper Coil,misc,True
+19on2,Transformer,misc,True
+z3k1m,Small Artifact Fragment,misc,True
+55ymq,Common Artifact Fragment,misc,True
+w39k3,Huge Artifact Fragment,misc,True
+dryl2,Lyubech Mutant’s Spleen,misc,True
+21065,Lyubech Mutant’s Heart,misc,True
+55olq,Remains of Murmur Devices,misc,True
+l0ryo,Black Spleen,misc,True
+rjvwy,Heart of Limbo,misc,True
+gn9y6,Vodyanoy’s Stone,other,True
+z30yy,Reed Fungus,other,True
+4k5lr,Seedpod,other,True
+kr53y,Sticky Root,other,True
+009n9,Burning Crappite,other,True
+mr13y,Rusty Fly Agaric,other,True
+olz36,Spool of Copper Wire,other,True
+q039j,Aluminum Cable,other,True
+21g9l,Infernal Coal,other,True
+34z1l,Chernobyl Chamomile,other,True
+77oy6,Remains of a Signal Processor,other,True
+y40kk,Large Pickle,other,True
+w30w2,Squirrel Yeast,other,True
+4k5gr,Alpha Data Block,other,True
+nkgl1,Formaldehyde,other,True
+pj50w,Black Zoneshroom,other,True
+vn0dr,Hard Drives,other,True
+dr61j,Beta Data Block,other,True
+gn956,Squash-Whoosh-Splat Stone,other,True
+z301y,Flowering Northern Moss,other,True
+55621,Army Battery,other,True
+y409k,Gamma Data Block,other,True
+34zjl,Digamma Data Fragment,other,True
+gn976,Purified Substance 07270,other,True
+z30my,Flowering Red Fern,other,True
+9dk7y,Psy-Tracker,other,True
+191w2,Digamma Data Block,other,True
+gn975,Portable Quantum Generator,other,True
+gnpr5,Dark Limbo,other,True
+z3ogm,Flowering Bitterleaf,other,True
+y4y33,Lambda Data Block,other,True
+w3zj3,Modified Anomalous Battery,other,True
+4k3qo,Concentrated Limboplasma,other,True
+z3ozm,Glowing Sugar,misc,True
+194j1,Pouch of 12.7 mm Rounds,bullet,True
+z3oln,Pouch of 12.7 mm Sniper Rifle Rounds,bullet,True
+kr2np,AM-17 Part #1,misc,True
+q0pj3,AM-17 Part #2,misc,True
+j0w5g,AM-17 Part #3,misc,True
+l0oyo,AM-17 Part #4,misc,True
+006ry,Scorpion EVO III Part #2,misc,True
+mrn02,Scorpion EVO III Part #3,misc,True
+ol6km,Scorpion EVO III Part #4,misc,True
+pjo64,Sig Sauer P320 Part #2,misc,True
+vn5jp,Sig Sauer P320 Part #3,misc,True
+dr9m2,Sig Sauer P320 Part #4,misc,True
+21wo5,VIKING Tactics Part #1,misc,True
+342g5,VIKING Tactics Part #2,misc,True
+77dlj,VIKING Tactics Part #3,misc,True
+6ojw0,Lantac BMD Part #1,misc,True
+9do6y,Lantac BMD Part #2,misc,True
+19yr2,Lantac BMD Part #3,misc,True
+gnz45,ACOG 2x40 Part #1,misc,True
+z3nzm,ACOG 2x40 Part #2,misc,True
+55j5q,ACOG 2x40 Part #3,misc,True
+y4643,DOTSAT Part #1,misc,True
+w3y33,DOTSAT Part #2,misc,True
+4kjko,DOTSAT Part #3,misc,True
+kr2rp,Lantac Dragon Part #1,misc,True
+q0p03,Lantac Dragon Part #2,misc,True
+j0w0g,Lantac Dragon Part #3,misc,True
+j0w96,Cheap Spare Parts,other,True
+l0og1,Standard Spare Parts,other,True
