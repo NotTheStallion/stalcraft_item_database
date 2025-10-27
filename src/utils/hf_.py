@@ -24,34 +24,31 @@ dataset_info:
 {description}
 """
 
-# Zip the CSV file
-with zipfile.ZipFile(zip_file, 'w', zipfile.ZIP_DEFLATED) as zipf:
+
+# Load HF repo
+def load_hf_repo():
+    repo_local_dir = "hf_repo"
+    repo = Repository(local_dir=repo_local_dir, clone_from=repo_id, repo_type="dataset")
+    return repo_local_dir
+
+# Zip updated CSV file from data directory
+def zip_dataset(repo_local_dir):
+    zip_file = os.path.join(repo_local_dir, "data", "item_id_db.zip")
+    csv_file = os.path.join("data", "item_id_db.csv")
+    with zipfile.ZipFile(zip_file, 'w', zipfile.ZIP_DEFLATED) as zipf:
         zipf.write(csv_file, arcname=os.path.basename(csv_file))
+    return zip_file
 
-# Authenticate with Hugging Face
-token = HfFolder.get_token()
-api = HfApi()
 
-# Create repo if it doesn't exist
-try:
-        api.create_repo(repo_id, repo_type="dataset", exist_ok=True)
-except Exception:
-        pass
+# push hf_repo to hub
+def push_to_hf(repo_local_dir):
+    repo = Repository(local_dir=repo_local_dir, clone_from=repo_id, repo_type="dataset")
+    repo.push_to_hub(commit_message="Update zipped CSV dataset")
 
-# Clone repo locally
-repo_local_dir = "hf_repo"
-repo = Repository(local_dir=repo_local_dir, clone_from=repo_id, repo_type="dataset", use_auth_token=token)
 
-# Copy files to repo
-os.makedirs(repo_local_dir, exist_ok=True)
-target_data_dir = os.path.join(repo_local_dir, "data")
-os.makedirs(target_data_dir, exist_ok=True)
-if not os.path.exists(zip_file):
-    raise FileNotFoundError(f"{zip_file} does not exist. Please check the path and try again.")
-
-os.replace(zip_file, os.path.join(target_data_dir, os.path.basename(zip_file)))
-with open(os.path.join(repo_local_dir, "README.md"), "w") as f:
-        f.write(card_content)
-
-# Push to Hugging Face Hub
-repo.push_to_hub(commit_message="Add zipped CSV dataset and database card")
+if __name__ == "__main__":
+    repo_local_dir = load_hf_repo()
+    zip_file = zip_dataset(repo_local_dir)
+    push_to_hf(repo_local_dir)
+    
+    

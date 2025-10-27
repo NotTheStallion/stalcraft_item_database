@@ -26,7 +26,7 @@ def sleep(timeout, retry=3):
                 newtimeout = timeout + retries * 5
                 try: 
                     value = function(*args, **kwargs)
-                except:
+                except:  # noqa: E722
                     retries += 1
                     if retries != retry:
                         print(f'Sleeping for {newtimeout} seconds | Remaining retries {retry - retries}')

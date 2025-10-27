@@ -1,11 +1,8 @@
 import argparse
 import numpy as np
 from pathlib import Path
-from src.dataset import combine_valid_invald, split_encode_dataset, load_hf_dataset, CHARS, encode_id, candidate_ids
+from src.dataset import combine_valid_invald, split_encode_dataset, load_hf_dataset, encode_id, candidate_ids
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import classification_report
-from itertools import product
-import random
 from tqdm import tqdm
 
 
@@ -83,31 +80,19 @@ def main(argv: list[str] | None = None) -> int:
                 for invalid_id in invalid_ids:
                     f.write(f"{invalid_id},Item Generated,unknown,False\n")
             print(f"Saved {len(invalid_ids)} invalid IDs to {invalid_path}")
-        elif args.save_invalid_ids == False and iter_idx == args.num_iters - 1:
+        elif not args.save_invalid_ids and iter_idx == args.num_iters - 1:
             with open(invalid_path, "w") as f:
                 f.write("id,name,type,tradable\n")
-                f.write(f"inval,Item One,weapon,True\n")  # Ensure at least one entry
+                f.write("inval,Item One,weapon,True\n")  # Ensure at least one entry
         
         valid_path = BASE_DIR / "data" / "item_id_db.csv"
         with open(valid_path, "a") as f:
             for valid_id in valid_ids:
                 f.write(f"{valid_id},Item Generated,unknown,True\n")
-            
         
-        
-        
-        
-        
-        
+    print("DONE")
 
-        
-        
-        
-        
-    
-        
-    
-    return 3
+    return 0
 
 
 if __name__ == "__main__":
