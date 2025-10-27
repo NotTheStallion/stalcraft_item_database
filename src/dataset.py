@@ -10,7 +10,16 @@ from itertools import product
 # Define possible characters
 CHARS = string.ascii_lowercase + string.digits
 CHAR2IDX = {c: i for i, c in enumerate(CHARS)}
-ALL_IDS = [''.join(p) for p in product(CHARS, repeat=5)]
+
+
+# Load HF dataset
+def load_hf_dataset(BASE_DIR):
+    data_dir = BASE_DIR / "data"
+    data_dir.mkdir(parents=True, exist_ok=True)
+
+    df = pd.read_csv("hf://datasets/NotTheStallion/stalcraft-database/data/item_id_db.zip")
+    csv_path = data_dir / "item_id_db.csv"
+    df.to_csv(csv_path, index=False)
 
 
 # Encode ID into numeric vector (one-hot per character)
