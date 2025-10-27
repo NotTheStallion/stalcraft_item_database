@@ -32,7 +32,7 @@ def main(argv: list[str] | None = None) -> int:
     
     # Training args
     parser.add_argument("--num_iters", type=int, default=2, help="number of train-search iterations to find item IDs")
-    parser.add_argument("--nums_searches", type=int, default=1000, help="number of searches per iteration to find item IDs")
+    parser.add_argument("--num_searches", type=int, default=1000, help="number of searches per iteration to find item IDs")
     parser.add_argument(
         "--save-invalid-ids",
         action="store_true",
@@ -62,54 +62,57 @@ def main(argv: list[str] | None = None) -> int:
     # Preprocess dataset
     from src.dataset import combine_valid_invald, split_encode_dataset
     
-    X_ids, y_labels, X_ordered, y_ordered = combine_valid_invald()
-    X_train, X_test, y_train, y_test = split_encode_dataset(X_ids, y_labels)
     
-    print(f"Total samples: {len(X_ids)}")
-    print(f"Training samples: {len(X_train)}")
-    print(f"Testing samples: {len(X_test)}")
-    train_ratio = sum(y_train) / len(y_train)
-    test_ratio = sum(y_test) / len(y_test)
-    print(f"Training valid ID ratio: {train_ratio:.4f}")
-    print(f"Testing valid ID ratio: {test_ratio:.4f}")
 
 
     # Train ID classifier
     from sklearn.linear_model import LogisticRegression
     from sklearn.metrics import classification_report
-    from sklearn.model_selection import StratifiedKFold
-    from sklearn.metrics import log_loss
     
     
     for iter_idx in range(args.num_iters):
         print(f"\n=== Iteration {iter_idx + 1} / {args.num_iters} ===")
-
-        skf = StratifiedKFold(n_splits=10, shuffle=True, random_state=2025)
-        train_losses = []
-        val_losses = []
-
-        for train_idx, val_idx in skf.split(X_train, y_train):
-            X_fold_train, X_fold_val = X_train[train_idx], X_train[val_idx]
-            y_fold_train, y_fold_val = y_train[train_idx], y_train[val_idx]
-            clf = LogisticRegression(max_iter=1000)
-            clf.fit(X_fold_train, y_fold_train)
-
-            train_proba = clf.predict_proba(X_fold_train)
-            val_proba = clf.predict_proba(X_fold_val)
-            train_losses.append(log_loss(y_fold_train, train_proba))
-            val_losses.append(log_loss(y_fold_val, val_proba))
-
-        mean_train_loss = sum(train_losses) / len(train_losses)
-        mean_val_loss = sum(val_losses) / len(val_losses)
-        print(f"CV mean train loss: {mean_train_loss:.4f}, CV mean val loss: {mean_val_loss:.4f}")
-
-        # Retrain on full training set and evaluate on test set
+        
+        X_ids, y_labels, X_ordered, y_ordered = combine_valid_invald()
+        X_train, X_test, y_train, y_test = split_encode_dataset(X_ids, y_labels, test_size=0)
+        
+        print(f"Total samples: {len(X_ids)}")
+        print(f"Training samples: {len(X_train)}")
+        print(f"Testing samples: {len(X_test)}")
+        
         model = LogisticRegression(max_iter=1000, class_weight="balanced", random_state=2025)
         model.fit(X_train, y_train)
+        
+        
+        from dataset import is_in_ordered_list, ALL_IDS, encode_id
+        
+        unchecked_ids = [id for id in ALL_IDS if not is_in_ordered_list(X_ordered, id)]
+        
+        top_k = args.num_searches
+        batch_size = 10000
+        num_parts = 2
+        part_size = len(unchecked_ids) // num_parts
+        top_k_per_part = top_k // num_parts
 
-        y_pred = model.predict(X_test)
-        print("\nClassification Report on Test Set:")
-        print(classification_report(y_test, y_pred, digits=4))
+        all_top_ids = []
+        
+        from tqdm import tqdm
+        import numpy as np
+        
+
+        for part in range(num_parts):
+            start = part * part_size
+            end = (part + 1) * part_size if part < num_parts - 1 else len(unchecked_ids)
+            part_ids = unchecked_ids[start:end]
+
+            part_probs = []
+            for i in tqdm(range(0, len(part_ids), batch_size), desc=f"Predicting probabilities (part {part+1}/{num_parts})"):
+                batch_ids = part_ids[i:i+batch_size]
+                batch_encoded = np.array([encode_id(x) for x in batch_ids])
+                batch_probs = model.predict_proba(batch_encoded)[:, 1]
+                part_probs.extend(zip(batch_ids, batch_probs))
+        
+        
         
         
     
