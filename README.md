@@ -1,0 +1,1 @@
+# stalcraft_item_database
