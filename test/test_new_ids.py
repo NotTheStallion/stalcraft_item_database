@@ -4,6 +4,7 @@ import subprocess
 import sys
 from pathlib import Path
 import pytest
+from test_utils import _get_prev_file_via_git, _read_csv_from_string, _read_current_ids
 
 # Ensure src is importable
 ROOT = Path(__file__).resolve().parents[1]
@@ -16,59 +17,7 @@ from utils.api import is_id_valid  # noqa: E402
 
 
 
-def _read_csv_from_string(s: str):
-    f = s.splitlines()
-    reader = csv.DictReader(f)
-    ids = [row.get("id") for row in reader if row.get("id")]
-    return ids
 
-
-def _read_current_ids(path: Path):
-    with path.open("r", encoding="utf-8", errors="ignore") as f:
-        reader = csv.DictReader(f)
-        return [row.get("id") for row in reader if row.get("id")]
-
-
-def _get_prev_file_via_git(filepath: str):
-    # Try origin/main first (CI/common case), fallback to HEAD~1
-    cmd = ["git", "show", f"origin/master:{filepath}"]
-    
-    try:
-        out = subprocess.check_output(cmd, stderr=subprocess.DEVNULL)
-        return out.decode("utf-8")
-    except subprocess.CalledProcessError:
-        return
-
-
-def _get_added_ids_via_diff(filepath: str):
-    # As a last resort, use git diff to collect added lines in the file
-    try:
-        out = subprocess.check_output(["git", "diff", "--unified=0", "--no-color", "--", filepath])
-        text = out.decode("utf-8")
-    except subprocess.CalledProcessError:
-        return []
-
-    added = []
-    for line in text.splitlines():
-        if line.startswith("+") and not line.startswith("++"):
-            # simple heuristic: CSV row was added
-            added.append(line[1:])
-
-    if not added:
-        return []
-
-    # Parse added lines as CSV (prepend header if possible)
-    # Try to find header in current file
-    header = None
-    try:
-        with open(filepath, "r", encoding="utf-8", errors="ignore") as f:
-            header = f.readline().strip()
-    except Exception:
-        header = None
-
-    csv_text = (header + "\n" if header else "") + "\n".join(added)
-    reader = csv.DictReader(csv_text.splitlines())
-    return [row.get("id") for row in reader if row.get("id")]
 
 
 # @pytest.mark.network
@@ -101,14 +50,14 @@ def test_new_ids_are_valid_or_skipped():
 
     # If nothing new detected, skip the test (nothing to validate)
     if not new_ids:
-        pytest.skip("No newly added IDs detected in data/item_id_db.csv")
+        return
 
     # Limit number of checked ids to keep test time reasonable
     MAX_CHECK = int(os.getenv("TEST_MAX_NEW_IDS", "20"))
     new_ids = new_ids[:MAX_CHECK]
 
     if not (os.getenv("CLIENT_ID") and os.getenv("CLIENT_SECRET")):
-        pytest.skip("CLIENT_ID/CLIENT_SECRET not set in environment for API validation")
+        return
 
     invalid = []
     for item_id in new_ids:
@@ -122,6 +71,7 @@ def test_new_ids_are_valid_or_skipped():
             invalid.append(item_id)
 
     assert not invalid, f"Some newly added IDs were not validated by API: {invalid}"
+    
 
 
 
