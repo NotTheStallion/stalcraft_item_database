@@ -1,11 +1,12 @@
 import argparse
 import numpy as np
 from pathlib import Path
-from src.dataset import combine_valid_invald, split_encode_dataset, load_hf_dataset, CHARS, encode_id
+from src.dataset import combine_valid_invald, split_encode_dataset, load_hf_dataset, CHARS, encode_id, candidate_ids
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report
 from itertools import product
 import random
+from tqdm import tqdm
 
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -18,11 +19,12 @@ def main(argv: list[str] | None = None) -> int:
     
     # Training args
     parser.add_argument("--num_iters", type=int, default=2, help="number of train-search iterations to find item IDs")
-    parser.add_argument("--num_searches", type=int, default=1000, help="number of searches per iteration to find item IDs")
+    parser.add_argument("--num_searches", type=int, default=100, help="number of searches per iteration to find item IDs")
+    parser.add_argument("--save_valid_ids", action="store_true", default=False, help="save valid IDs generated during training to disk")
     parser.add_argument(
-        "--save-invalid-ids",
+        "--save_invalid_ids",
         action="store_true",
-        default=True,
+        default=False,
         help="save invalid IDs generated during training to disk (useful if planning additional iterations)",
     )
     
@@ -34,7 +36,8 @@ def main(argv: list[str] | None = None) -> int:
     
     # Load dataset from HF
     # @note : Login using e.g. `huggingface-cli login` to access this dataset
-    load_hf_dataset(BASE_DIR)
+    if not args.save_valid_ids:
+        load_hf_dataset(BASE_DIR)
     
     for iter_idx in range(args.num_iters):
         print(f"\n=== Iteration {iter_idx + 1} / {args.num_iters} ===")
@@ -48,56 +51,48 @@ def main(argv: list[str] | None = None) -> int:
         
         print("Trained model ... OK")
         
-        
-        
-        N = args.num_searches * 3
-        # genrate N equally separated ids of length 5 from CHARS
-        
-        
-        k = len(CHARS)
-        length = 5
-        total = k ** length
-
-        if N >= total:
-            all_ids = [''.join(p) for p in product(CHARS, repeat=length)]
-        else:
-            if N == 1:
-                indices = [0]
-            else:
-                indices = [ (i * (total - 1)) // (N - 1) for i in range(N) ]
-
-            all_ids = []
-            for idx in indices:
-                rem = idx
-                chars = []
-                for pos in range(length - 1, -1, -1):
-                    base = k ** pos
-                    digit = rem // base
-                    chars.append(CHARS[digit])
-                    rem = rem % base
-                all_ids.append(''.join(chars))
+        # Candidate IDs for model prediction
+        all_ids = candidate_ids(num_checks = args.num_searches * 3)
         
         X_all = np.array([encode_id(id_str) for id_str in all_ids])
         probs = model.predict_proba(X_all)[:, 1]
         
-        # Select top-k ids
+        
+        # Select top-k ids to check using Stalcraft API
         top_k_indices = np.argsort(probs)[-args.num_searches:]
         top_k_ids = [all_ids[i] for i in top_k_indices]
         
+        print(f"Checking {len(top_k_ids)} candidate IDs using Stalcraft API ...")
         
-        
-        
-        
-        # Validate top-k ids
+        # Validate top-k ids using API
         from src.utils.api import is_id_valid
         valid_ids = []
         invalid_ids = []
         
-        for item_id in top_k_ids:
+        for item_id in tqdm(top_k_ids):
             if is_id_valid(item_id):
                 valid_ids.append(item_id)
             else:
                 invalid_ids.append(item_id)
+        
+        
+        # Store IDs to dataset files
+        invalid_path = BASE_DIR / "data" / "invalid_item_id_db.csv"
+        if args.save_invalid_ids and invalid_ids:
+            with open(invalid_path, "a") as f:
+                for invalid_id in invalid_ids:
+                    f.write(f"{invalid_id},Item Generated,unknown,False\n")
+            print(f"Saved {len(invalid_ids)} invalid IDs to {invalid_path}")
+        elif args.save_invalid_ids == False and iter_idx == args.num_iters - 1:
+            with open(invalid_path, "w") as f:
+                f.write("id,name,type,tradable\n")
+                f.write(f"inval,Item One,weapon,True\n")  # Ensure at least one entry
+        
+        valid_path = BASE_DIR / "data" / "item_id_db.csv"
+        with open(valid_path, "a") as f:
+            for valid_id in valid_ids:
+                f.write(f"{valid_id},Item Generated,unknown,True\n")
+            
         
         
         

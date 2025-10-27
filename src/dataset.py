@@ -81,3 +81,31 @@ def split_encode_dataset(X_ids, y_labels, test_size=0.2):
 def is_in_ordered_list(ordered_list, item):
         idx = bisect_left(ordered_list, item)
         return idx < len(ordered_list) and ordered_list[idx] == item
+
+
+def candidate_ids(num_checks = 10_000):
+    
+    k = len(CHARS)
+    length = 5
+    total = k ** length
+
+    if num_checks >= total:
+        all_ids = [''.join(p) for p in product(CHARS, repeat=length)]
+    else:
+        if num_checks == 1:
+            indices = [0]
+        else:
+            indices = [ (i * (total - 1)) // (num_checks - 1) for i in range(num_checks) ]
+
+        all_ids = []
+        for idx in indices:
+            rem = idx
+            chars = []
+            for pos in range(length - 1, -1, -1):
+                base = k ** pos
+                digit = rem // base
+                chars.append(CHARS[digit])
+                rem = rem % base
+            all_ids.append(''.join(chars))
+    
+    return all_ids
