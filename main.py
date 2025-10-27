@@ -26,7 +26,7 @@ def main(argv: list[str] | None = None) -> int:
     )
     
     # Extra args
-    parser.add_argument("--push-to-hf", action="store_true", default=True, help="push the valid item IDs to Hugging Face Hub")
+    parser.add_argument("--push_to_hf", action="store_true", default=True, help="push the valid item IDs to Hugging Face Hub")
     args = parser.parse_args(argv)
     
     
