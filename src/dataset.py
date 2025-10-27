@@ -3,18 +3,21 @@ import numpy as np
 import pandas as pd
 from random import shuffle
 from sklearn.model_selection import train_test_split
+from bisect import bisect_left
+from itertools import product
 
 
 # Define possible characters
-chars = string.ascii_lowercase + string.digits
-char_to_idx = {c: i for i, c in enumerate(chars)}
+CHARS = string.ascii_lowercase + string.digits
+CHAR2IDX = {c: i for i, c in enumerate(CHARS)}
+ALL_IDS = [''.join(p) for p in product(CHARS, repeat=5)]
 
 
 # Encode ID into numeric vector (one-hot per character)
 def encode_id(item_id):
-    vec = np.zeros((5, len(chars)))
+    vec = np.zeros((5, len(CHARS)))
     for i, ch in enumerate(item_id):
-        vec[i, char_to_idx[ch]] = 1
+        vec[i, CHAR2IDX[ch]] = 1
     return vec.flatten()
 
 
@@ -49,8 +52,13 @@ def combine_valid_invald(valid_ids="data/item_id_db.csv", invalid_ids="data/inva
 
 
 def split_encode_dataset(X_ids, y_labels, test_size=0.2):
+    if test_size == 0:
+        X = np.array([encode_id(x) for x in X_ids])
+        y = np.array(y_labels)
+        return X, np.array([]), y, np.array([])
+    
     X_train_ids, X_test_ids, y_train_labels, y_test_labels = train_test_split(
-        X_ids, y_labels, test_size=0.2, random_state=2025, stratify=y_labels
+        X_ids, y_labels, test_size=test_size, random_state=2025, stratify=y_labels
     )
 
     X_train = np.array([encode_id(x) for x in X_train_ids])
@@ -59,3 +67,8 @@ def split_encode_dataset(X_ids, y_labels, test_size=0.2):
     y_test = np.array(y_test_labels)
     
     return X_train, X_test, y_train, y_test
+
+
+def is_in_ordered_list(ordered_list, item):
+        idx = bisect_left(ordered_list, item)
+        return idx < len(ordered_list) and ordered_list[idx] == item
