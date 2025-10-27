@@ -49,6 +49,7 @@ def get_token():
         "grant_type": "client_credentials",
         "scope": ""
     })
+    assert CLIENT_ID 
     return resp.json()["access_token"]
 
 ACCESS_TOKEN = get_token()
