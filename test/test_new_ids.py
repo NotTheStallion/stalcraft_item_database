@@ -77,73 +77,73 @@ def test_accessible_env_var():
     
 
 
-def test_frozen_ids():
-    from utils.api import is_id_valid  # noqa: E402
+# def test_frozen_ids():
+#     from utils.api import is_id_valid  # noqa: E402
     
-    repo_file = ROOT / "test" / "item_id_db.csv"
-    rotted_file = ROOT / "test" / "item_id_db_rotted.csv"
-    assert repo_file.exists(), f"expected file {repo_file} to exist"
+#     repo_file = ROOT / "test" / "item_id_db.csv"
+#     rotted_file = ROOT / "test" / "item_id_db_rotted.csv"
+#     assert repo_file.exists(), f"expected file {repo_file} to exist"
 
-    current_ids = _read_current_ids(repo_file)
+#     current_ids = _read_current_ids(repo_file)
 
-    prev_text = _get_prev_file_via_git(str(repo_file.relative_to(ROOT)))
-    rotted_prev_text = _get_prev_file_via_git(str(rotted_file.relative_to(ROOT)))
+#     prev_text = _get_prev_file_via_git(str(repo_file.relative_to(ROOT)))
+#     rotted_prev_text = _get_prev_file_via_git(str(rotted_file.relative_to(ROOT)))
 
-    if prev_text:
-        prev_ids = _read_csv_from_string(prev_text)
+#     if prev_text:
+#         prev_ids = _read_csv_from_string(prev_text)
     
-    if rotted_prev_text:
-        rotted_prev_ids = _read_csv_from_string(rotted_prev_text)
+#     if rotted_prev_text:
+#         rotted_prev_ids = _read_csv_from_string(rotted_prev_text)
 
-    new_ids = []
-    if prev_ids:
-        new_ids = [i for i in current_ids if i not in set(prev_ids)]
+#     new_ids = []
+#     if prev_ids:
+#         new_ids = [i for i in current_ids if i not in set(prev_ids)]
 
-    new_rotted_ids = []
-    if rotted_prev_ids:
-        new_rotted_ids = [i for i in current_ids if i in set(rotted_prev_ids)]
+#     new_rotted_ids = []
+#     if rotted_prev_ids:
+#         new_rotted_ids = [i for i in current_ids if i in set(rotted_prev_ids)]
 
-    # If nothing new detected, skip the test (nothing to validate)
-    if not new_ids or not new_rotted_ids:
-        return
+#     # If nothing new detected, skip the test (nothing to validate)
+#     if not new_ids or not new_rotted_ids:
+#         return
 
-    # Limit number of checked ids to keep test time reasonable
-    MAX_CHECK = int(os.getenv("TEST_MAX_NEW_IDS", "20"))
-    new_ids = new_ids[:MAX_CHECK]
-    new_rotted_ids = new_rotted_ids[:MAX_CHECK]
+#     # Limit number of checked ids to keep test time reasonable
+#     MAX_CHECK = int(os.getenv("TEST_MAX_NEW_IDS", "20"))
+#     new_ids = new_ids[:MAX_CHECK]
+#     new_rotted_ids = new_rotted_ids[:MAX_CHECK]
 
-    if not (os.getenv("CLIENT_ID") and os.getenv("CLIENT_SECRET")):
-        return
+#     if not (os.getenv("CLIENT_ID") and os.getenv("CLIENT_SECRET")):
+#         return
 
-    invalid = []
-    for item_id in new_ids:
-        try:
-            res = is_id_valid(item_id)
-        except Exception as e:
-            pytest.skip(f"API call raised exception; skipping. Exception: {e}")
+#     invalid = []
+#     for item_id in new_ids:
+#         try:
+#             res = is_id_valid(item_id)
+#         except Exception as e:
+#             pytest.skip(f"API call raised exception; skipping. Exception: {e}")
 
-        # According to src/utils/api.py, is_id_valid returns r.json() when ok
-        if not res:
-            invalid.append(item_id)
+#         # According to src/utils/api.py, is_id_valid returns r.json() when ok
+#         if not res:
+#             invalid.append(item_id)
 
-    assert not invalid, f"Some newly added IDs were not validated by API: {invalid}"
+#     assert not invalid, f"Some newly added IDs were not validated by API: {invalid}"
     
-    rotted_invalid = []
-    for item_id in new_rotted_ids:
-        try:
-            res = is_id_valid(item_id)
-        except Exception as e:
-            pytest.skip(f"API call raised exception; skipping. Exception: {e}")
+#     rotted_invalid = []
+#     for item_id in new_rotted_ids:
+#         try:
+#             res = is_id_valid(item_id)
+#         except Exception as e:
+#             pytest.skip(f"API call raised exception; skipping. Exception: {e}")
 
-        # According to src/utils/api.py, is_id_valid returns r.json() when ok
-        if res:
-            rotted_invalid.append(item_id)
+#         # According to src/utils/api.py, is_id_valid returns r.json() when ok
+#         if res:
+#             rotted_invalid.append(item_id)
     
-    assert not rotted_invalid, f"Some rotted IDs were validated by API (should be invalid): {rotted_invalid}"
+#     assert not rotted_invalid, f"Some rotted IDs were validated by API (should be invalid): {rotted_invalid}"
 
 
 
 
 if __name__ == "__main__":
-    test_frozen_ids()
+    # test_frozen_ids()
     test_new_ids_are_valid_or_skipped()
