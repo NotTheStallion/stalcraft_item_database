@@ -11,7 +11,6 @@ if str(SRC) not in sys.path:
     sys.path.insert(0, str(SRC))
 
 
-from utils.api import is_id_valid  # noqa: E402
 
 
 
@@ -20,6 +19,7 @@ from utils.api import is_id_valid  # noqa: E402
 
 # @pytest.mark.network
 def test_new_ids_are_valid_or_skipped():
+    from utils.api import is_id_valid  # noqa: E402
     """Detect newly added IDs in data/item_id_db.csv and validate via API.
 
     Behavior:
