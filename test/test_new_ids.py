@@ -12,7 +12,14 @@ if str(SRC) not in sys.path:
 
 
 
+def test_api_call():
+    from utils.api import is_id_valid  # noqa: E402
+    """Test that the API call works for a known valid and invalid ID."""
+    valid_id = "l0og1"  # Replace with a known valid ID for testing
+    invalid_id = "inval"  # Replace with a known invalid ID for testing
 
+    assert is_id_valid(valid_id), f"Expected ID {valid_id} to be valid."
+    assert not is_id_valid(invalid_id), f"Expected ID {invalid_id} to be invalid."
 
 
 

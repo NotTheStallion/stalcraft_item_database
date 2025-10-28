@@ -51,9 +51,21 @@ def get_token():
         "scope": ""
     })
     
-    assert resp.ok, f"Failed to get token: {resp.status_code} {resp.text}"
-    assert "access_token" in resp.json(), f"access_token not in response: {resp.text}"
-    return resp.json()["access_token"]
+    try:
+        resp.raise_for_status()
+    except requests.RequestException as e:
+        raise RuntimeError(f"Failed to obtain token: {e}") from e
+
+    try:
+        data = resp.json()
+    except ValueError:
+        raise RuntimeError("Token endpoint returned a non-JSON response")
+
+    token = data.get("access_token")
+    if not token:
+        raise RuntimeError(f"Token missing in response: {data!r}")
+
+    return token
 
 ACCESS_TOKEN = get_token()
 HEADERS = {"Authorization": f"Bearer {ACCESS_TOKEN}"}
