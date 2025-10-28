@@ -39,7 +39,7 @@ def test_new_ids_are_valid_or_skipped():
         prev_ids = _read_csv_from_string(prev_text)
 
     new_ids = []
-    if prev_ids:
+    if prev_text:
         new_ids = [i for i in current_ids if i not in set(prev_ids)]
 
     # If nothing new detected, skip the test (nothing to validate)
@@ -146,3 +146,4 @@ def test_frozen_ids():
 
 if __name__ == "__main__":
     test_frozen_ids()
+    test_new_ids_are_valid_or_skipped()
