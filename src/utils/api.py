@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 import time
 import functools
 
-load_dotenv()
+dot_env_exist = load_dotenv()
 
 
 
@@ -39,8 +39,10 @@ def sleep(timeout, retry=3):
 
 API_TOKEN_URL = "https://exbo.net/oauth/token"
 HISTORY_URL = "https://eapi.stalcraft.net/RU/auction/{item}/history"
-CLIENT_ID = os.getenv("CLIENT_ID")
-CLIENT_SECRET = os.getenv("CLIENT_SECRET")
+
+if dot_env_exist:
+    CLIENT_ID = os.getenv("CLIENT_ID")
+    CLIENT_SECRET = os.getenv("CLIENT_SECRET")
 
 def get_token():
     resp = requests.post(API_TOKEN_URL, json={
@@ -49,7 +51,6 @@ def get_token():
         "grant_type": "client_credentials",
         "scope": ""
     })
-    assert CLIENT_ID 
     return resp.json()["access_token"]
 
 ACCESS_TOKEN = get_token()
