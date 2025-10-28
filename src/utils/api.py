@@ -50,17 +50,8 @@ def get_token():
         "grant_type": "client_credentials",
         "scope": ""
     })
-    
-    try:
-        resp.raise_for_status()
-    except requests.RequestException as e:
-        raise RuntimeError(f"Failed to obtain token: {e}") from e
 
-    try:
-        data = resp.json()
-    except ValueError:
-        raise RuntimeError("Token endpoint returned a non-JSON response")
-
+    data = resp.json()
     token = data.get("access_token")
     if not token:
         raise RuntimeError(f"Token missing in response: {data!r}")
