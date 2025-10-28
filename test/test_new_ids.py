@@ -22,6 +22,8 @@ def test_api_call():
     assert not is_id_valid(invalid_id), f"Expected ID {invalid_id} to be invalid."
 
 
+def must_break():
+    assert False, "Deliberate failure to test test framework."
 
 
 # @pytest.mark.network
