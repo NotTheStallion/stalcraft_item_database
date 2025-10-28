@@ -22,10 +22,6 @@ def test_api_call():
     assert not is_id_valid(invalid_id), f"Expected ID {invalid_id} to be invalid."
 
 
-def test_must_break():
-    assert False==True, "Deliberate failure to test test framework."
-
-
 # @pytest.mark.network
 def test_new_ids_are_valid_or_skipped():
     from utils.api import is_id_valid  # noqa: E402
@@ -79,7 +75,6 @@ def test_new_ids_are_valid_or_skipped():
 
     assert not invalid, f"Some newly added IDs were not validated by API: {invalid}"
     
-
 
 
 def test_accessible_env_var():
