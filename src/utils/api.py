@@ -50,6 +50,9 @@ def get_token():
         "grant_type": "client_credentials",
         "scope": ""
     })
+    
+    assert resp.ok, f"Failed to get token: {resp.status_code} {resp.text}"
+    assert "access_token" in resp.json(), f"access_token not in response: {resp.text}"
     return resp.json()["access_token"]
 
 ACCESS_TOKEN = get_token()
