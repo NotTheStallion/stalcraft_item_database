@@ -18,11 +18,20 @@ def _read_current_ids(path: Path):
 
 
 def _get_prev_file_via_git(filepath: str):
-    # Try origin/main first (CI/common case), fallback to HEAD~1
-    cmd = ["git", "show", f"origin/master:{filepath}"]
-    
-    try:
-        out = subprocess.check_output(cmd, stderr=subprocess.DEVNULL)
-        return out.decode("utf-8")
-    except subprocess.CalledProcessError:
-        return
+    # Try the previous commit on remote master first (CI/common case),
+    # then local master~1, then HEAD~1 as a last resort.
+    candidates = [
+        f"origin/master~1:{filepath}",
+        f"master~1:{filepath}",
+        f"HEAD~1:{filepath}",
+    ]
+
+    for spec in candidates:
+        cmd = ["git", "show", spec]
+        try:
+            out = subprocess.check_output(cmd, stderr=subprocess.DEVNULL)
+            return out.decode("utf-8")
+        except subprocess.CalledProcessError:
+            continue
+
+    return None
