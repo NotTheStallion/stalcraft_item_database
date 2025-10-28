@@ -5,6 +5,7 @@ import string
 from test import is_id_valid
 from tqdm import tqdm
 
+
 chars = string.ascii_lowercase + string.digits
 char_to_idx = {c: i for i, c in enumerate(chars)}
 all_ids = [''.join(p) for p in product(chars, repeat=5)]
