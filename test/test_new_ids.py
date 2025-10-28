@@ -73,6 +73,12 @@ def test_new_ids_are_valid_or_skipped():
 
 
 
+def test_accessible_env_var():
+    """Test that CLIENT_ID and CLIENT_SECRET are accessible in the test environment."""
+    assert os.getenv("CLIENT_ID"), "CLIENT_ID environment variable is not set."
+    assert os.getenv("CLIENT_SECRET"), "CLIENT_SECRET environment variable is not set."
+    assert os.getenv("NEW"), "NEW environment variable is not set."
+
 
 if __name__ == "__main__":
     test_new_ids_are_valid_or_skipped()
