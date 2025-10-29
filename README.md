@@ -38,6 +38,8 @@ Using the API and bruteforcing was done by multiple people before, but it is ver
 
 There is a lot to be done in this project such as improving the AI model, improving the search pipeline, adding more metadata to the database, etc. If you are interested in contributing, please feel free to open an issue or a pull request.
 
+To contribute, clone the repository, create a new branch, and make your changes. Once you are satisfied with your changes, submit a pull request for review.
+
 Thank you 💕!
 
 ## License
