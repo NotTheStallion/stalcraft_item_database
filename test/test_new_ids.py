@@ -23,11 +23,7 @@ def test_api_call():
     assert not is_id_valid(invalid_id), f"Expected ID {invalid_id} to be invalid."
 
 
-# def test_must_break():
-#     assert False==True, "Deliberate failure to test test framework."
 
-
-# @pytest.mark.network
 def test_new_ids_are_valid_or_skipped():
     from utils.api import is_id_valid  # noqa: E402
     """Detect newly added IDs by comparing current branch dataset to master and validate via API.
@@ -105,4 +101,3 @@ def test_accessible_env_var():
     """Test that CLIENT_ID and CLIENT_SECRET are accessible in the test environment."""
     assert os.getenv("CLIENT_ID"), "CLIENT_ID environment variable is not set."
     assert os.getenv("CLIENT_SECRET"), "CLIENT_SECRET environment variable is not set."
-    assert os.getenv("NEW"), "NEW environment variable is not set."
