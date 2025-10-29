@@ -2,6 +2,7 @@ import os
 import sys
 from pathlib import Path
 import pytest
+import subprocess
 from test_utils import _get_prev_file_via_git, _read_csv_from_string, _read_current_ids
 
 # Ensure src is importable
@@ -22,36 +23,67 @@ def test_api_call():
     assert not is_id_valid(invalid_id), f"Expected ID {invalid_id} to be invalid."
 
 
+# def test_must_break():
+#     assert False==True, "Deliberate failure to test test framework."
+
+
 # @pytest.mark.network
 def test_new_ids_are_valid_or_skipped():
     from utils.api import is_id_valid  # noqa: E402
-    """Detect newly added IDs in data/item_id_db.csv and validate via API.
+    """Detect newly added IDs by comparing current branch dataset to master and validate via API.
+
+    Steps:
+    - Load the dataset from the current branch (working tree).
+    - Fetch and load the dataset from `origin/master` (or `origin/main`).
+    - Compute newly added IDs (present in current, not in master).
+    - Validate those new IDs via the API and fail if any are invalid.
     """
-    
+
     repo_file = ROOT / "data" / "item_id_db.csv"
     assert repo_file.exists(), f"expected file {repo_file} to exist"
 
+    # Load current branch dataset (PR / working tree)
     current_ids = _read_current_ids(repo_file)
 
-    prev_text = _get_prev_file_via_git(str(repo_file.relative_to(ROOT)))
-    
-    if prev_text:
-        prev_ids = _read_csv_from_string(prev_text)
+    # Try to fetch master from origin to ensure origin/master is available
+    try:
+        subprocess.check_call(["git", "fetch", "origin", "master"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    except subprocess.CalledProcessError:
+        # ignore fetch failure; next step will try multiple refs
+        pass
 
-    new_ids = []
-    if prev_text:
-        new_ids = [i for i in current_ids if i not in set(prev_ids)]
+    prev_text = None
+    for ref in ("origin/master", "origin/main", "master", "main", "HEAD~1"):
+        try:
+            out = subprocess.check_output(["git", "show", f"{ref}:{str(repo_file.relative_to(ROOT))}"], stderr=subprocess.DEVNULL)
+            prev_text = out.decode("utf-8")
+            break
+        except subprocess.CalledProcessError:
+            continue
 
-    # If nothing new detected, skip the test (nothing to validate)
+    if prev_text is None:
+        # As a last resort, try the helper which checks a few common specs
+        prev_text = _get_prev_file_via_git(str(repo_file.relative_to(ROOT)))
+
+    if prev_text is None:
+        pytest.skip("Could not retrieve master/base version of data/item_id_db.csv to compare")
+
+    prev_ids = _read_csv_from_string(prev_text)
+
+    # Compute new IDs (present in current but not in prev/master)
+    prev_set = set(prev_ids)
+    new_ids = [i for i in current_ids if i not in prev_set]
+
     if not new_ids:
-        return
+        pytest.skip("No newly added IDs detected in data/item_id_db.csv")
 
     # Limit number of checked ids to keep test time reasonable
-    MAX_CHECK = int(os.getenv("TEST_MAX_NEW_IDS", "20"))
+    MAX_CHECK = int(os.getenv("TEST_MAX_NEW_IDS", "100"))
     new_ids = new_ids[:MAX_CHECK]
 
+    # Require credentials to run validation (CI should supply them)
     if not (os.getenv("CLIENT_ID") and os.getenv("CLIENT_SECRET")):
-        return
+        pytest.skip("CLIENT_ID/CLIENT_SECRET not set in environment for API validation")
 
     invalid = []
     for item_id in new_ids:
@@ -60,7 +92,7 @@ def test_new_ids_are_valid_or_skipped():
         except Exception as e:
             pytest.skip(f"API call raised exception; skipping. Exception: {e}")
 
-        # According to src/utils/api.py, is_id_valid returns r.json() when ok
+        # is_id_valid returns a JSON-like truthy object when valid, otherwise None/False
         if not res:
             invalid.append(item_id)
 
@@ -68,82 +100,9 @@ def test_new_ids_are_valid_or_skipped():
     
 
 
+
 def test_accessible_env_var():
     """Test that CLIENT_ID and CLIENT_SECRET are accessible in the test environment."""
     assert os.getenv("CLIENT_ID"), "CLIENT_ID environment variable is not set."
     assert os.getenv("CLIENT_SECRET"), "CLIENT_SECRET environment variable is not set."
     assert os.getenv("NEW"), "NEW environment variable is not set."
-    
-    
-
-
-# def test_frozen_ids():
-#     from utils.api import is_id_valid  # noqa: E402
-    
-#     repo_file = ROOT / "test" / "item_id_db.csv"
-#     rotted_file = ROOT / "test" / "item_id_db_rotted.csv"
-#     assert repo_file.exists(), f"expected file {repo_file} to exist"
-
-#     current_ids = _read_current_ids(repo_file)
-
-#     prev_text = _get_prev_file_via_git(str(repo_file.relative_to(ROOT)))
-#     rotted_prev_text = _get_prev_file_via_git(str(rotted_file.relative_to(ROOT)))
-
-#     if prev_text:
-#         prev_ids = _read_csv_from_string(prev_text)
-    
-#     if rotted_prev_text:
-#         rotted_prev_ids = _read_csv_from_string(rotted_prev_text)
-
-#     new_ids = []
-#     if prev_ids:
-#         new_ids = [i for i in current_ids if i not in set(prev_ids)]
-
-#     new_rotted_ids = []
-#     if rotted_prev_ids:
-#         new_rotted_ids = [i for i in current_ids if i in set(rotted_prev_ids)]
-
-#     # If nothing new detected, skip the test (nothing to validate)
-#     if not new_ids or not new_rotted_ids:
-#         return
-
-#     # Limit number of checked ids to keep test time reasonable
-#     MAX_CHECK = int(os.getenv("TEST_MAX_NEW_IDS", "20"))
-#     new_ids = new_ids[:MAX_CHECK]
-#     new_rotted_ids = new_rotted_ids[:MAX_CHECK]
-
-#     if not (os.getenv("CLIENT_ID") and os.getenv("CLIENT_SECRET")):
-#         return
-
-#     invalid = []
-#     for item_id in new_ids:
-#         try:
-#             res = is_id_valid(item_id)
-#         except Exception as e:
-#             pytest.skip(f"API call raised exception; skipping. Exception: {e}")
-
-#         # According to src/utils/api.py, is_id_valid returns r.json() when ok
-#         if not res:
-#             invalid.append(item_id)
-
-#     assert not invalid, f"Some newly added IDs were not validated by API: {invalid}"
-    
-#     rotted_invalid = []
-#     for item_id in new_rotted_ids:
-#         try:
-#             res = is_id_valid(item_id)
-#         except Exception as e:
-#             pytest.skip(f"API call raised exception; skipping. Exception: {e}")
-
-#         # According to src/utils/api.py, is_id_valid returns r.json() when ok
-#         if res:
-#             rotted_invalid.append(item_id)
-    
-#     assert not rotted_invalid, f"Some rotted IDs were validated by API (should be invalid): {rotted_invalid}"
-
-
-
-
-if __name__ == "__main__":
-    # test_frozen_ids()
-    test_new_ids_are_valid_or_skipped()
