@@ -1,5 +1,7 @@
 # stalcraft_item_database
 
+![stalcraft_logo](res/stalcraft_logo.png)
+
 This repository controls the Hugging Face dataset at:
 
 https://huggingface.co/datasets/NotTheStallion/stalcraft-database
@@ -9,6 +11,7 @@ database is populated by contributors: users add new IDs they discover by
 running API checks against candidate IDs proposed by an AI model that
 learned the probability an ID is valid. When contributors find real IDs they
 commit them to this repository and the dataset on Hugging Face is updated.
+
 
 ## Methodology
 
