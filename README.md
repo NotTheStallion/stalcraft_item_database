@@ -23,6 +23,29 @@ Using the API and bruteforcing was done by multiple people before, but it is ver
 ![id_probabilities](res/id_probas.png)
 
 
+## Installation
+
+To set up the project locally, follow these steps:
+- Clone the repository:
+  ```bash
+  git clone REPO_URL
+    ```
+- Creatr .env file and add necessary environment variables (CLIENT_ID, CLIENT_SECRET) for API access.
+    exmaple :
+    ```env
+    CLIENT_ID=your_client_id
+    CLIENT_SECRET=your_client_secret
+    ```
+- Install the required dependencies:
+  ```bash
+  pip install -r requirements.txt
+  ```
+
+- Run the main script to access various functionalities:
+  ```bash
+  python main.py
+  ```
+
 
 ## What this repo contains
 
