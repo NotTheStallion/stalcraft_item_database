@@ -4,7 +4,7 @@ import pandas as pd
 from random import shuffle
 from sklearn.model_selection import train_test_split
 from bisect import bisect_left
-from itertools import product
+import random
 
 
 # Define possible characters
@@ -28,6 +28,19 @@ def encode_id(item_id):
     for i, ch in enumerate(item_id):
         vec[i, CHAR2IDX[ch]] = 1
     return vec.flatten()
+
+
+def generate_random_ids(k, length=5, seed=42):
+    max_combos = len(CHARS) ** length
+    if k > max_combos:
+        raise ValueError(f"k ({k}) is larger than the number of possible combos ({max_combos})")
+    if seed is not None:
+        random.seed(seed)
+    ids = set()
+    while len(ids) < k:
+        ids.add(''.join(random.choices(CHARS, k=length)))
+    return list(ids)
+
 
 
 def combine_valid_invald(valid_ids="data/item_id_db.csv", invalid_ids="data/invalid_item_id_db.csv"):
