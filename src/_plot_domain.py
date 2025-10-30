@@ -1,17 +1,13 @@
 import joblib
 import numpy as np
-from itertools import product
-from sklearn.model_selection import train_test_split
 import string
-from test import is_id_valid
 from tqdm import tqdm
+import matplotlib.pyplot as plt
+from dataset import combine_valid_invald, generate_random_ids, encode_id
 
-chars = string.ascii_lowercase + string.digits
-char_to_idx = {c: i for i, c in enumerate(chars)}
-n = 100_000  # Number of ids to keep
-all_prediction_ids = [''.join(p) for p in product(chars, repeat=5)]
-step = len(all_prediction_ids) // n
-all_prediction_ids = [all_prediction_ids[i] for i in range(0, len(all_prediction_ids), step)][:n]
+CHARS = string.ascii_lowercase + string.digits
+CHAR2IDX = {c: i for i, c in enumerate(CHARS)}
+all_prediction_ids = generate_random_ids(1_000_000)
 
 
 # Path to your saved logistic regression model
@@ -22,14 +18,6 @@ logistic_regression_model = joblib.load(model_path)
 
 # Example: print model parameters
 print(logistic_regression_model)
-
-import matplotlib.pyplot as plt
-
-def encode_id(item_id):
-    vec = np.zeros((5, len(chars)))
-    for i, ch in enumerate(item_id):
-        vec[i, char_to_idx[ch]] = 1
-    return vec.flatten()
 
 # Prepare features for all ids using one-hot encoding
 X = np.array([encode_id(id_str) for id_str in tqdm(all_prediction_ids, desc="Encoding IDs")])
@@ -48,13 +36,11 @@ probs = logistic_regression_model.predict_proba(X)[:, 1]
 # print(all_ids)
 
 
-from id_classifier import dataset
 
-X_, y, ground_truth_ids, y_ordered = dataset()
+
+X_, y, ground_truth_ids, y_ordered = combine_valid_invald()
 X_ordered_encoded = np.array([encode_id(id_str) for id_str in ground_truth_ids])
-# print(X_ordered_encoded[:5])
 
-# print(X_ordered[:10])
 
 # test_1 = encode_id("4qdqn")
 # test_2 = encode_id("q4qnd")
