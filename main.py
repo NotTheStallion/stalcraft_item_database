@@ -17,11 +17,11 @@ def main(argv: list[str] | None = None) -> int:
     # Training args
     parser.add_argument("--num_iters", type=int, default=2, help="number of train-search iterations to find item IDs")
     parser.add_argument("--num_searches", type=int, default=100, help="number of searches per iteration to find item IDs")
-    parser.add_argument("--save_valid_ids", action="store_true", default=False, help="save valid IDs generated during training to disk")
+    parser.add_argument("--save_valid_ids", action="store_true", default=True, help="save valid IDs generated during training to disk")
     parser.add_argument(
         "--save_invalid_ids",
         action="store_true",
-        default=False,
+        default=True,
         help="save invalid IDs generated during training to disk (useful if planning additional iterations)",
     )
     
@@ -49,7 +49,7 @@ def main(argv: list[str] | None = None) -> int:
         print("Trained model ... OK")
         
         # Candidate IDs for model prediction
-        all_ids = candidate_ids(num_checks = args.num_searches * 3)
+        all_ids = candidate_ids(num_checks = args.num_searches * 3, existing_ids=X_ordered)
         
         X_all = np.array([encode_id(id_str) for id_str in all_ids])
         probs = model.predict_proba(X_all)[:, 1]

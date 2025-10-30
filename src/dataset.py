@@ -83,29 +83,84 @@ def is_in_ordered_list(ordered_list, item):
         return idx < len(ordered_list) and ordered_list[idx] == item
 
 
-def candidate_ids(num_checks = 10_000):
-    
+def candidate_ids(num_checks=10_000, existing_ids=None):
+    if existing_ids is None:
+        existing_ids = []
+
+    # helper conversions
     k = len(CHARS)
     length = 5
     total = k ** length
 
-    if num_checks >= total:
-        all_ids = [''.join(p) for p in product(CHARS, repeat=length)]
-    else:
-        if num_checks == 1:
-            indices = [0]
-        else:
-            indices = [ (i * (total - 1)) // (num_checks - 1) for i in range(num_checks) ]
+    def id_to_idx(item_id):
+        idx = 0
+        for ch in item_id:
+            if ch not in CHAR2IDX:
+                return None
+            idx = idx * k + CHAR2IDX[ch]
+        return idx
 
+    def idx_to_id(idx):
+        rem = idx
+        chars = []
+        for pos in range(length - 1, -1, -1):
+            base = k ** pos
+            digit = rem // base
+            chars.append(CHARS[digit])
+            rem = rem % base
+        return ''.join(chars)
+
+    # build set of existing indices (only valid ids counted)
+    existing_idx = set()
+    for eid in existing_ids:
+        if isinstance(eid, str) and len(eid) == length:
+            eidx = id_to_idx(eid)
+            if eidx is not None:
+                existing_idx.add(eidx)
+
+    available = total - len(existing_idx)
+    if available <= 0:
+        return []
+
+    # If asking for all (or more than available), return all remaining ids
+    if num_checks >= available:
         all_ids = []
-        for idx in indices:
-            rem = idx
-            chars = []
-            for pos in range(length - 1, -1, -1):
-                base = k ** pos
-                digit = rem // base
-                chars.append(CHARS[digit])
-                rem = rem % base
-            all_ids.append(''.join(chars))
-    
+        for idx in range(total):
+            if idx not in existing_idx:
+                all_ids.append(idx_to_id(idx))
+        return all_ids
+
+    # choose evenly spaced base indices
+    if num_checks == 1:
+        base_indices = [0]
+    else:
+        base_indices = [ (i * (total - 1)) // (num_checks - 1) for i in range(num_checks) ]
+
+    chosen_idx = []
+    chosen_set = set()
+
+    # for each base index, probe forward to find a non-existing, non-duplicate index
+    for b in base_indices:
+        idx = b
+        # attempt up to total times (should normally find quickly)
+        for _ in range(total):
+            if idx not in existing_idx and idx not in chosen_set:
+                chosen_idx.append(idx)
+                chosen_set.add(idx)
+                break
+            idx = (idx + 1) % total
+        if len(chosen_idx) >= num_checks:
+            break
+
+    # if we still need more (due to collisions), scan sequentially
+    idx = 0
+    while len(chosen_idx) < num_checks:
+        if idx not in existing_idx and idx not in chosen_set:
+            chosen_idx.append(idx)
+            chosen_set.add(idx)
+        idx += 1
+        if idx >= total:
+            break
+
+    all_ids = [idx_to_id(i) for i in chosen_idx]
     return all_ids
