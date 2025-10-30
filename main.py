@@ -91,6 +91,11 @@ def main(argv: list[str] | None = None) -> int:
                 f.write(f"{valid_id},Item Generated,unknown,True\n")
         
     print("DONE")
+    # save model weights
+    model_path = BASE_DIR / "data" / "id_classifier_model.joblib"
+    import joblib
+    joblib.dump(model, model_path)
+    print(f"Saved model to {model_path}")
 
     return 0
 
